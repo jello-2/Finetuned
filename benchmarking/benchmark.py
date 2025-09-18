@@ -1,5 +1,6 @@
 import json
 import torch
+import re
 from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
 
 class LLMCom:
@@ -41,33 +42,54 @@ class LLMCom:
     
 
 
-def load():
-    with open("key_pair.json", "r", encoding = "utf-8") as f:
+def load_questions():
+    with open("benchmarking/key_pair.json", "r", encoding = "utf-8") as f:
         return json.load(f)
         
+def extract_answer(text):
+    match = re.search(r'\( *([A-E]) *\)', text)
+    if match:
+        return match.group(1)
 
 
 if __name__ == "__main__":
+
+    score = 0
+
+    answers = []
+
     llama = LLMCom()
     
-    contest_instructions = "This is a 25-question, multiple choice test. Each question is followed by answers marked A, B, C, D and E. Only one of these is correct. No problems on the test will <i>require</i> the use of a calculator). Avoid unecessary brute forcing. Figures are not necessarily drawn to scale."
+    contest_instructions = "Solve the following question, given these conditions: each question has answers A, B, C, D and E. Only one of these is correct. No problems on the test will require the use of a calculator. Avoid unecessary brute forcing. Figures are not necessarily drawn to scale."
     
     answer_instructions = "You are to reply your answer with a box, with the label \\boxed{} of the letter corresponding to the answer choice you are most confident with."
     
+    questions = load_questions()
 
-    
-    questions = load()
+    for i in range(25):
+        title = questions[i]["title"]
+        question = questions[i]["question"]
+        full_prompt = f"{contest_instructions} {answer_instructions} The question is given as follows: \n {title}: {question}"
+        
+        #print(f"Prompt to be fed: {full_prompt}")
 
-    title = questions[0]["title"]
-    question = questions[0]["question"]
-    full_prompt = f"{contest_instructions} {answer_instructions} The question is given as follows: \n {title}: {question}"
-    
-    print(f"Prompt to be fed: {full_prompt}")
-    
-    response = llama.chat(full_prompt, temperature=0.3) 
-    print("Response:", response)
+        response = llama.chat(full_prompt, temperature=0.3) 
+        print("Response:", response)
 
-# testing loop
+        answer = extract_answer(response)
 
-current_score = 0
+        with open ("benchmarking/responses.txt","w") as f:
+            f.write(f"{title}: \n {question} \n")
+            f.write(f"Solution: {answer}")
+            f.close()
+
+        if answer == questions[i]["answer"]:
+            score += 6
+            answers.append(1)
+        else:
+            score += 0
+            answers.append(0)
+
+
+
 
