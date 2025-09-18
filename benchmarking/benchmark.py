@@ -20,17 +20,13 @@ class LLMCom:
             trust_remote_code=True
         )
 
-    def generate_response_pipeline(self, user_message, max_new_tokens=1024, temperature=0.3):
-        messages = []
-        
-        messages.append({"role": "user", "content": user_message})
-        
+    def generate_response_pipeline(self, user_message, max_new_tokens=768, temperature=0.3):
         response = self.pipe(
-            messages,
+            user_message,
             max_new_tokens=max_new_tokens,
             temperature=temperature,
             top_p=0.9,
-            do_sample=True,
+            do_sample=False,
             return_full_text=False
         )
 
@@ -60,9 +56,9 @@ if __name__ == "__main__":
 
     llama = LLMCom()
     
-    contest_instructions = "Solve the following question, given these conditions: each question has answers A, B, C, D and E. Only one of these is correct. No problems on the test will require the use of a calculator. Avoid unecessary brute forcing. Figures are not necessarily drawn to scale."
+    contest_instructions = "Solve the following math question. Of A, B, C, D and E, only one of these is correct. This will not require the use of a calculator. Avoid unecessary brute forcing. Figures are not necessarily drawn to scale.\n"
     
-    answer_instructions = "You are to reply your answer with a box, with the label \\boxed{} of the letter corresponding to the answer choice you are most confident with."
+    answer_instructions = "You are to reply concisely with your answer with the label \\boxed{} of the **letter** corresponding to the answer choice you are most confident with.\n"
     
     questions = load_questions()
 
@@ -71,17 +67,15 @@ if __name__ == "__main__":
         question = questions[i]["question"]
         full_prompt = f"{contest_instructions} {answer_instructions} The question is given as follows: \n {title}: {question}"
         
-        #print(f"Prompt to be fed: {full_prompt}")
-
+        print(f"Prompt to be fed: {full_prompt}")
         response = llama.chat(full_prompt, temperature=0.3) 
         print("Response:", response)
 
         answer = extract_answer(response)
 
-        with open ("benchmarking/responses.txt","w") as f:
+        with open ("benchmarking/responses.txt","a") as f:
             f.write(f"{title}: \n {question} \n")
-            f.write(f"Solution: {answer}")
-            f.close()
+            f.write(f"Solution: {answer}\n\n")
 
         if answer == questions[i]["answer"]:
             score += 6
@@ -89,6 +83,9 @@ if __name__ == "__main__":
         else:
             score += 0
             answers.append(0)
+        print("=========================================")
+        print(f"CURRENT QUESTION: {i+1} | SCORE: {score}")
+        print("=========================================")
 
 
 
