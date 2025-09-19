@@ -1,13 +1,25 @@
 import json
 import torch
 import re
-from transformers import AutoTokenizer, AutoModelForCausalLM, pipeline
+from transformers import AutoTokenizer, pipeline, StoppingCriteria, StoppingCriteriaList
+
+
+class StopOnBoxed(StoppingCriteria):
+    def __init__(self, tokenizer):
+        self.tokenizer = tokenizer
+        self.pattern = re.compile(r'\\boxed\{[A-E]\}')  # matches \boxed{A} ... \boxed{E}
+
+    def __call__(self, input_ids: torch.LongTensor, scores: torch.FloatTensor, **kwargs) -> bool:
+        # decode current sequence
+        decoded = self.tokenizer.decode(input_ids[0], skip_special_tokens=True)
+        # return True once a boxed answer is seen
+        return bool(self.pattern.search(decoded))
+
 
 class LLMCom:
-    def __init__ (self, model_name = "meta-llama/Llama-3.1-8B-Instruct"):
+    def __init__(self, model_name="meta-llama/Llama-3.1-8B-Instruct"):
         self.model_name = model_name
         self.device = "cuda" if torch.cuda.is_available() else "cpu"
-
         print(f"Using {self.device}")
 
         self.tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -20,33 +32,47 @@ class LLMCom:
             trust_remote_code=True
         )
 
-    def generate_response_pipeline(self, user_message, max_new_tokens=768, temperature=0.3):
+    def generate_response_pipeline(self, user_message, max_new_tokens=1024, temperature=0.3):
+        stopping_criteria = StoppingCriteriaList([StopOnBoxed(self.tokenizer)])
+
         response = self.pipe(
             user_message,
             max_new_tokens=max_new_tokens,
             temperature=temperature,
             top_p=0.9,
-            do_sample=False,
-            return_full_text=False
+            do_sample=False,  # deterministic for math
+            return_full_text=False,
+            eos_token_id=self.tokenizer.eos_token_id,
+            stopping_criteria=stopping_criteria
         )
 
         return response[0]["generated_text"]
-        
-    def chat(self, user_message, method="pipeline", **kwargs):
-        
-        return self.generate_response_pipeline(user_message,  **kwargs)
-    
 
+    def chat(self, user_message, method="pipeline", **kwargs):
+        return self.generate_response_pipeline(user_message, **kwargs)
+    
 
 def load_questions():
     with open("benchmarking/key_pair.json", "r", encoding = "utf-8") as f:
         return json.load(f)
         
-def extract_answer(text):
-    match = re.search(r'\( *([A-E]) *\)', text)
+def extract_answer(text: str):
+    # 1. Look for \boxed{} (letters or numbers), with optional $...$ delimiters
+    match = re.search(r'\$?\\boxed\{\s*([^}]*)\s*\}\$?', text)
     if match:
-        return match.group(1)
+        return match.group(1).strip()
 
+    # 2. Look for multiple-choice letter in (A), [A], A), or "Answer: A"
+    match = re.search(r'[\(\[\s]?([A-E])[\)\]\s]?', text)
+    if match:
+        return match.group(1).strip()
+
+    # 3. As a fallback, explicitly check for "Answer: X"
+    match = re.search(r'Answer:\s*([A-E0-9]+)', text, re.IGNORECASE)
+    if match:
+        return match.group(1).strip()
+
+    return None
 
 if __name__ == "__main__":
 
@@ -56,9 +82,9 @@ if __name__ == "__main__":
 
     llama = LLMCom()
     
-    contest_instructions = "Solve the following math question. Of A, B, C, D and E, only one of these is correct. This will not require the use of a calculator. Avoid unecessary brute forcing. Figures are not necessarily drawn to scale.\n"
+    contest_instructions = "Solve the following math question. Of A, B, C, D and E, only one of these is correct. Avoid unecessary brute forcing. Figures are not necessarily drawn to scale.\n"
     
-    answer_instructions = "You are to reply concisely with your answer with the label \\boxed{} of the **letter** corresponding to the answer choice you are most confident with.\n"
+    answer_instructions = "You are to format your answer with \\boxed{<letter>}, where <letter> is the letter associated with the answer choice you are most confident with.\n"
     
     questions = load_questions()
 
