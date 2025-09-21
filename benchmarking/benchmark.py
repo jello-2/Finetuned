@@ -27,16 +27,16 @@ class LLMCom:
         self.pipe = pipeline(
             "text-generation",
             model=model_name,
-            dtype=torch.float16,
+            torch_dtype=torch.float16,
             device_map="auto",
             trust_remote_code=True
         )
 
-    def generate_response_pipeline(self, user_message, max_new_tokens=1024, temperature=0.3):
+    def generate_response_pipeline(self, prompt, max_new_tokens=1024, temperature=0.3):
         stopping_criteria = StoppingCriteriaList([StopOnBoxed(self.tokenizer)])
 
         response = self.pipe(
-            user_message,
+            prompt,
             max_new_tokens=max_new_tokens,
             temperature=temperature,
             top_p=0.9,
@@ -49,7 +49,16 @@ class LLMCom:
         return response[0]["generated_text"]
 
     def chat(self, user_message, method="pipeline", **kwargs):
-        return self.generate_response_pipeline(user_message, **kwargs)
+        # Wrap the user message in LLaMA 3.1 chat format automatically
+        messages = [
+            {"role": "user", "content": user_message}
+        ]
+        prompt = self.tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=True
+        )
+        return self.generate_response_pipeline(prompt, **kwargs)
     
 
 def load_questions():
@@ -57,17 +66,14 @@ def load_questions():
         return json.load(f)
         
 def extract_answer(text: str):
-    # 1. Look for \boxed{} (letters or numbers), with optional $...$ delimiters
     match = re.search(r'\$?\\boxed\{\s*([^}]*)\s*\}\$?', text)
     if match:
         return match.group(1).strip()
 
-    # 2. Look for multiple-choice letter in (A), [A], A), or "Answer: A"
     match = re.search(r'[\(\[\s]?([A-E])[\)\]\s]?', text)
     if match:
         return match.group(1).strip()
 
-    # 3. As a fallback, explicitly check for "Answer: X"
     match = re.search(r'Answer:\s*([A-E0-9]+)', text, re.IGNORECASE)
     if match:
         return match.group(1).strip()
@@ -84,7 +90,7 @@ if __name__ == "__main__":
     
     contest_instructions = "Solve the following math question. Of A, B, C, D and E, only one of these is correct. Avoid unecessary brute forcing. Figures are not necessarily drawn to scale.\n"
     
-    answer_instructions = "You are to format your answer with \\boxed{<letter>}, where <letter> is the letter associated with the answer choice you are most confident with.\n"
+    answer_instructions = "You are to format your answer with \\boxed{X}, where X is the letter associated with the answer choice you are most confident with.\n"
     
     questions = load_questions()
 

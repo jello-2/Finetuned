@@ -1,0 +1,132 @@
+Problem 1: 
+ What is the value of $9901\cdot101-99\cdot10101?$ $A) 2 B) 20 C) 200 D) 202 E) 2020$ 
+Solution: None
+
+Problem 2: 
+ A model used to estimate the time it will take to hike to the top of the mountain on a trail is of the form $T=aL+bG,$ where $a$ and $b$ are constants, $T$ is the time in minutes, $L$ is the length of the trail in miles, and $G$ is the altitude gain in feet. The model estimates that it will take $69$ minutes to hike to the top if a trail is $1.5$ miles long and ascends $800$ feet, as well as if a trail is $1.2$ miles long and ascends $1100$ feet. How many minutes does the model estimates it will take to hike to the top if the trail is $4.2$ miles long and ascends $4000$ feet? $A) 240 B) 246 C) 252 D) 258 E) 264$ 
+Solution: 246
+
+Problem 3: 
+ The number $2024$ is written as the sum of not necessarily distinct two-digit numbers. What is the least number of two-digit numbers needed to write this sum? $A) 20 B) 21 C) 22 D) 23 E) 24$ 
+Solution: D
+
+Problem 4: 
+ What is the least value of $n$ such that $n!$ is a multiple of $2024$ ? $A) 11 B) 21 C) 22 D) 23 E) 253 $ 
+Solution: 23
+
+Problem 5: 
+ A data set containing $20$ numbers, some of which are $6$ , has mean $45$ . When all the 6s are removed, the data set has mean $66$ . How many 6s were in the original data set? $A) 4 B) 5 C) 6 D) 7 E) 8$ 
+Solution: 7
+
+Problem 6: 
+ The product of three integers is $60$ . What is the least possible positive sum of the three integers? $A) 2 B) 3 C) 5 D) 6 E) 13$ 
+Solution: 10
+
+Problem 7: 
+ In $\triangle ABC$ , $\angle ABC = 90^\circ$ and $BA = BC = \sqrt{2}$ . Points $P_1, P_2, \dots, P_{2024}$ lie on hypotenuse $\overline{AC}$ so that $AP_1= P_1P_2 = P_2P_3 = \dots = P_{2023}P_{2024} = P_{2024}C$ . What is the length of the vector sum $\overrightarrow{BP_1} + \overrightarrow{BP_2} + \overrightarrow{BP_3} + \dots + \overrightarrow{BP_{2024}}$? $A) 1011 B) 1012 C) 2023 D) 2024 E) 2025 $ 
+Solution: A
+
+Problem 8: 
+ How many angles $\theta$ with $0\le\theta\le2\pi$ satisfy $\log(\sin(3\theta))+\log(\cos(2\theta))=0$ ? $A) 0 B) 1 C) 2 D) 3 E) 4 $ 
+Solution: A
+
+Problem 1: 
+ What is the value of $9901\cdot101-99\cdot10101?$ $A) 2 B) 20 C) 200 D) 202 E) 2020$ 
+Solution: None
+
+Problem 2: 
+ A model used to estimate the time it will take to hike to the top of the mountain on a trail is of the form $T=aL+bG,$ where $a$ and $b$ are constants, $T$ is the time in minutes, $L$ is the length of the trail in miles, and $G$ is the altitude gain in feet. The model estimates that it will take $69$ minutes to hike to the top if a trail is $1.5$ miles long and ascends $800$ feet, as well as if a trail is $1.2$ miles long and ascends $1100$ feet. How many minutes does the model estimates it will take to hike to the top if the trail is $4.2$ miles long and ascends $4000$ feet? $A) 240 B) 246 C) 252 D) 258 E) 264$ 
+Solution: 246
+
+Problem 3: 
+ The number $2024$ is written as the sum of not necessarily distinct two-digit numbers. What is the least number of two-digit numbers needed to write this sum? $A) 20 B) 21 C) 22 D) 23 E) 24$ 
+Solution: D
+
+Problem 4: 
+ What is the least value of $n$ such that $n!$ is a multiple of $2024$ ? $A) 11 B) 21 C) 22 D) 23 E) 253 $ 
+Solution: 23
+
+Problem 5: 
+ A data set containing $20$ numbers, some of which are $6$ , has mean $45$ . When all the 6s are removed, the data set has mean $66$ . How many 6s were in the original data set? $A) 4 B) 5 C) 6 D) 7 E) 8$ 
+Solution: 7
+
+Problem 6: 
+ The product of three integers is $60$ . What is the least possible positive sum of the three integers? $A) 2 B) 3 C) 5 D) 6 E) 13$ 
+Solution: 10
+
+Problem 7: 
+ In $\triangle ABC$ , $\angle ABC = 90^\circ$ and $BA = BC = \sqrt{2}$ . Points $P_1, P_2, \dots, P_{2024}$ lie on hypotenuse $\overline{AC}$ so that $AP_1= P_1P_2 = P_2P_3 = \dots = P_{2023}P_{2024} = P_{2024}C$ . What is the length of the vector sum $\overrightarrow{BP_1} + \overrightarrow{BP_2} + \overrightarrow{BP_3} + \dots + \overrightarrow{BP_{2024}}$? $A) 1011 B) 1012 C) 2023 D) 2024 E) 2025 $ 
+Solution: A
+
+Problem 8: 
+ How many angles $\theta$ with $0\le\theta\le2\pi$ satisfy $\log(\sin(3\theta))+\log(\cos(2\theta))=0$ ? $A) 0 B) 1 C) 2 D) 3 E) 4 $ 
+Solution: A
+
+Problem 9: 
+ Let $M$ be the greatest integer such that both $M + 1213$ and $M + 3773$ are perfect squares. What is the units digit of $M$ ? $A) 1 B) 2 C) 3 D) 6 E) 8 $ 
+Solution: 5
+
+Problem 10: 
+ Let $\alpha$ be the radian measure of the smallest angle in a $3{-}4{-}5$ right triangle. Let $\beta$ be the radian measure of the smallest angle in a $7{-}24{-}25$ right triangle. In terms of $\alpha$ , what is $\beta$ ? $A) \frac{\alpha}{3} B) \alpha - \frac{\pi}{8} C) \frac{\pi}{2} - 2\alpha D) \frac{\alpha}{2} E) \pi - 4\alpha $ 
+Solution: A
+
+Problem 11: 
+ There are exactly $K$ positive integers $b$ with $5 \leq b \leq 2024$ such that the base-$b$ integer $2024_b$ is divisible by $16$ (where $16$ is in base ten). What is the sum of the digits of $K$ ? $A) 16 B) 17 C) 18 D) 20 E) 21$ 
+Solution: 18
+
+Problem 12: 
+ The first three terms of a geometric sequence are the integers $a,\,720,$ and $b,$ where $a<720<b.$ What is the sum of the digits of the least possible value of $b?$ $A) 9 B) 12 C) 16 D) 18 E) 21$ 
+Solution: 9
+
+Problem 13: 
+ The graph of $y=e^{x+1}+e^{-x}-2$ has an axis of symmetry. What is the reflection of the point $(-1,\frac{1}{2})$ over this axis? $A) \left(-1,-\frac{3}{2}\right) B) (-1,0) C) \left(-1,\frac{1}{2}\right) D) \left(0,\frac{1}{2}\right) E) \left(3,\frac{1}{2}\right)$ 
+Solution: C) \left(-1,\frac{1
+
+Problem 14: 
+ The numbers, in order, of each row and the numbers, in order, of each column of a $5 \times 5$ array of integers form an arithmetic progression of length $5{.}$ The numbers in positions $(5, 5), \,(2,4),\,(4,3),$ and $(3, 1)$ are $0, 48, 16,$ and $12{,}$ respectively. What number is in position $(1, 2)?$ $A) 19 B) 24 C) 29 D) 34 E) 39$ 
+Solution: None
+
+Problem 15: 
+ The roots of $x^3 + 2x^2 - x + 3$ are $p, q,$ and $r.$ What is the value of $(p^2 + 4)(q^2 + 4)(r^2 + 4)$? $A) 64 B) 75 C) 100 D) 125 E) 144$ 
+Solution: A
+
+Problem 16: 
+ A set of $12$ tokens ---- $3$ red, $2$ white, $1$ blue, and $6$ black ---- is to be distributed at random to $3$ game players, $4$ tokens per player. The probability that some player gets all the red tokens, another gets all the white tokens, and the remaining player gets the blue token can be written as $\frac{m}{n}$ , where $m$ and $n$ are relatively prime positive integers. What is $m+n$ ? $A) 387 B) 388 C) 389 D) 390 E) 391 $ 
+Solution: 1159
+
+Problem 17: 
+ Integers $a$ , $b$ , and $c$ satisfy $ab + c = 100$ , $bc + a = 87$ , and $ca + b = 60$ . What is $ab + bc + ca$ ? $A) 212 B) 247 C) 258 D) 276 E) 284 $ 
+Solution: 276
+
+Problem 18: 
+ On top of a rectangular card with sides of length $1$ and $2+\sqrt{3}$ , an identical card is placed so that two of their diagonals line up, as shown ( $\overline{AC}$ , in this case). Continue the process, adding a third card to the second, and so on, lining up successive diagonals after rotating clockwise. In total, how many cards must be used until a vertex of a new card lands exactly on the vertex labeled $B$ in the figure? $A) 6 B) 8 C) 10 D) 12 E) \text{No new vertex will land on }B.$ 
+Solution: 13
+
+Problem 19: 
+ Cyclic quadrilateral $ABCD$ has lengths $BC=CD=3$ and $DA=5$ with $\angle CDA=120^\circ$ . What is the length of the shorter diagonal of $ABCD$ ? $A) \frac{31}{7} B) \frac{33}{7} C) 5 D) \frac{39}{7} E) \frac{41}{7} $ 
+Solution: \frac{31
+
+Problem 20: 
+ Points $P$ and $Q$ are chosen uniformly and independently at random on sides $\overline {AB}$ and $\overline{AC},$ respectively, of equilateral triangle $\triangle ABC.$ Which of the following intervals contains the probability that the area of $\triangle APQ$ is less than half the area of $\triangle ABC?$ $A) \left[\frac{3}{8}, \frac{1}{2}\right] B) \left(\frac{1}{2}, \frac{2}{3}\right] C) \left(\frac{2}{3}, \frac{3}{4}\right] D) \left(\frac{3}{4}, \frac{7}{8}\right] E) \left(\frac{7}{8}, 1\right]$ 
+Solution: E
+
+Problem 21: 
+ Suppose that $a_1 = 2$ and the sequence $(a_n)$ satisfies the recurrence relation $\frac{a_n -1}{n-1}=\frac{a_{n-1}+1}{(n-1)+1}$ for all $n \ge 2.$ What is the greatest integer less than or equal to $\sum^{100}_{n=1} a_n^2$? $A) 338{,}550 B) 338{,}551 C) 338{,}552 D) 338{,}553 E) 338{,}554$ 
+Solution: 338{,
+
+Problem 22: 
+ The figure below shows a dotted grid $8$ cells wide and $3$ cells tall consisting of $1''\times1''$ squares. Carl places $1$ -inch toothpicks along some of the sides of the squares to create a closed loop that does not intersect itself. The numbers in the cells indicate the number of sides of that square that are to be covered by toothpicks, and any number of toothpicks are allowed if no number is written. In how many ways can Carl place the toothpicks? $A) 130 B) 144 C) 146 D) 162 E) 196$ 
+Solution: 146
+
+Problem 23: 
+ What is the value of $\tan^2 \frac {\pi}{16} \cdot \tan^2 \frac {3\pi}{16}~ + ~ \tan^2 \frac {\pi}{16} \cdot \tan^2 \frac {5\pi}{16} ~+~\tan^2 \frac {3\pi}{16} \cdot \tan^2 \frac {7\pi}{16} ~+~ \tan^2 \frac {5\pi}{16} \cdot \tan^2 \frac {7\pi}{16}$? $A) 28 B) 68 C) 70 D) 72 E) 84$ 
+Solution: 68
+
+Problem 24: 
+ A $\textit{disphenoid}$ is a tetrahedron whose triangular faces are congruent to one another. What is the least total surface area of a disphenoid whose faces are scalene triangles with integer side lengths? $A) \sqrt{3} B) 3\sqrt{15} C) 15 D) 15\sqrt{7} E) 24\sqrt{6}$ 
+Solution: 15
+
+Problem 25: 
+ A graph is $\textit{symmetric}$ about a line if the graph remains unchanged after reflection in that line. For how many quadruples of integers $(a,b,c,d)$ , where $|a|,|b|,|c|,|d|\le5$ and $c$ and $d$ are not both $0$ , is the graph of $y=\frac{ax+b}{cx+d}$ symmetric about the line $y=x$ ? $A) 1282 B) 1292 C) 1310 D) 1320 E) 1330$ 
+Solution: 61
+

@@ -45,7 +45,6 @@ def parse_problem_set(html: str):
     return problems
 
 
-# --- Example usage ---
 html = """
 
 <h2><span class="mw-headline" id="Problem_1">Problem 1</span></h2>

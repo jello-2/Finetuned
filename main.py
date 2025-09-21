@@ -1,13 +1,21 @@
-import os
-import json
-import numpy as np
-import torch  
-from torch import cuda
+from transformers import AutoModelForCausalLM, AutoTokenizer,pipeline
+from peft import prepare_model_for_kbit_training
+from peft import LoraConfig, get_peft_model
+from datasets import load_dataset
 import transformers
 
 
-print(cuda.is_available())
+
+model_name = "meta-llama/Llama-3.1-8B-Instruct"
+model = AutoModelForCausalLM.from_pretrained(
+    model_name, 
+    device_map = "auto",
+    trust_remote_code = False,
+    revision = "main"
+)
 
 
+tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast = True)
 
+model.eval()
 
