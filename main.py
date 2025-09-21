@@ -13,9 +13,12 @@ model = AutoModelForCausalLM.from_pretrained(
     trust_remote_code = False,
     revision = "main"
 )
+#https://huggingface.co/datasets/qwedsacf/competition_math?library=datasets
+
 
 
 tokenizer = AutoTokenizer.from_pretrained(model_name, use_fast = True)
 
 model.eval()
 
+problem = ""
